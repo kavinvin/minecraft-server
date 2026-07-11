@@ -35,6 +35,7 @@ services:
       RCLONE_CONFIG_GCS_TYPE: "google cloud storage"
       RCLONE_CONFIG_GCS_ENV_AUTH: "true"
       RCLONE_CONFIG_GCS_PROJECT_NUMBER: "${GCP_PROJECT}"
+      RCLONE_CONFIG_GCS_BUCKET_POLICY_ONLY: "true"
     volumes:
       - ./data:/data:ro
     restart: unless-stopped
