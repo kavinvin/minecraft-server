@@ -1,7 +1,7 @@
 services:
-  mc:
+  minecraft-server:
     image: itzg/minecraft-server:java25
-    container_name: mc
+    container_name: minecraft-server
     tty: true
     stdin_open: true
     ports:
@@ -18,15 +18,15 @@ services:
     stop_grace_period: 120s
     restart: unless-stopped
 
-  backup:
+  minecraft-backup:
     image: itzg/mc-backup
-    container_name: mc-backup
+    container_name: minecraft-backup
     depends_on:
-      - mc
+      - minecraft-server
     environment:
       BACKUP_INTERVAL: "${BACKUP_INTERVAL}"
       INITIAL_DELAY: "2m"
-      RCON_HOST: "mc"
+      RCON_HOST: "minecraft-server"
       RCON_PASSWORD: "${RCON_PASSWORD}"
       BACKUP_METHOD: "rclone"
       RCLONE_REMOTE: "gcs"

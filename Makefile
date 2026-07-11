@@ -14,7 +14,7 @@ logs:
 	docker compose logs -f
 
 backup:
-	docker exec mc-backup backup now
+	docker exec minecraft-backup backup now
 
 ps:
 	docker compose ps
